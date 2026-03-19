@@ -11,8 +11,8 @@ export default function BottomNav() {
   const isRewards = pathname.startsWith('/rewards')
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 max-w-[430px] mx-auto glass-card border-t border-slate-200 dark:border-slate-800 pb-8 pt-3 px-6 flex justify-between items-center z-[70]">
-      <Link href="/" className={`flex flex-col items-center gap-1 transition-colors ${isHome ? 'text-primary dark:text-accent active-tab' : 'text-slate-400 hover:text-primary'}`}>
+    <nav style={{ paddingBottom: '12px' }} className="fixed bottom-0 left-0 right-0 max-w-[430px] mx-auto glass-card border-t border-slate-200 dark:border-slate-800 pb-8 pt-3 px-6 flex justify-between items-center z-[70]">
+      <Link href="/home" className={`flex flex-col items-center gap-1 transition-colors ${isHome ? 'text-primary dark:text-accent active-tab' : 'text-slate-400 hover:text-primary'}`}>
         <span className="material-symbols-outlined">home</span>
         <span className="text-[10px] font-bold">Home</span>
       </Link>

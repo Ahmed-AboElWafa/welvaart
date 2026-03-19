@@ -10,7 +10,7 @@ export default function TransferPage() {
       {/* Header */}
       <div className="flex items-center px-4 py-3 border-b border-slate-100 dark:border-slate-800 shrink-0">
         <button
-          onClick={() => router.push('/')}
+          onClick={() => router.push('/home')}
           className="flex size-10 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
         >
           <span className="material-symbols-outlined text-base">arrow_back_ios_new</span>

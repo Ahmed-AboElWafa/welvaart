@@ -20,16 +20,28 @@ function SendFiatEnterAmountContent() {
   const [selectedAccountId, setSelectedAccountId] = useState<string | null>(null)
   const [showAccountPicker, setShowAccountPicker] = useState(false)
 
-  // Parse a pre-formatted balance string like '$42,150.00' or '€9,380.00' → number
+  // Known multi-character symbols that may contain dots or other regex-special chars
+  const KNOWN_SYMBOLS = ['د.إ', '€', '£', '¥', 'CHF', '$']
+
+  // Parse a pre-formatted balance string like '$42,150.00' or 'د.إ 3,680.00' → number
   const parseBalance = (balStr: string): number => {
-    const cleaned = String(balStr).replace(/[^0-9.]/g, '')
+    let s = String(balStr)
+    // Strip known symbols first (important: AED symbol 'د.إ' contains a dot)
+    for (const sym of KNOWN_SYMBOLS) {
+      s = s.replaceAll(sym, '')
+    }
+    // Now strip anything that is not a digit or a decimal point
+    const cleaned = s.replace(/[^0-9.]/g, '')
     return parseFloat(cleaned) || 0
   }
 
-  // Extract the leading currency symbol from the balance string (first non-digit char)
+  // Extract the leading currency symbol from the balance string
   const getSymbolFromBalance = (balStr: string): string => {
-    const match = String(balStr).match(/^([^0-9]+)/)
-    return match ? match[1].trim() : '$'
+    const s = String(balStr)
+    for (const sym of KNOWN_SYMBOLS) {
+      if (s.includes(sym)) return sym
+    }
+    return '$'
   }
 
   // Only show active accounts

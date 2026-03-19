@@ -114,17 +114,17 @@ function ConvertReviewContent() {
             <div className="flex justify-between items-start">
               <div>
                 <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">Sell</p>
-                <p className="font-bold text-lg text-slate-800 dark:text-slate-100">{parseFloat(amountNum.toFixed(6))} {from.symbol}</p>
+                <p className="font-bold text-lg text-slate-800 dark:text-slate-100">{parseFloat(amountNum.toFixed(4))} {from.symbol}</p>
               </div>
               <div className="text-right">
                 <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">Buy</p>
-                <p className="font-bold text-lg text-primary dark:text-accent">{parseFloat(converted.toFixed(6))} {to.symbol}</p>
+                <p className="font-bold text-lg text-primary dark:text-accent">{parseFloat(converted.toFixed(4))} {to.symbol}</p>
               </div>
             </div>
             <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
               <div className="flex justify-between items-center text-sm">
                 <span className="text-slate-500">Exchange Rate</span>
-                <span className="font-semibold text-slate-700 dark:text-slate-200">1 {from.symbol} = {rate < 0.0001 ? rate.toExponential(4) : parseFloat(rate.toFixed(6))} {to.symbol}</span>
+                <span className="font-semibold text-slate-700 dark:text-slate-200">1 {from.symbol} = {rate < 0.0001 ? rate.toExponential(4) : parseFloat(rate.toFixed(4))} {to.symbol}</span>
               </div>
               <div className="flex justify-between items-center text-sm">
                 <span className="text-slate-500">Fees</span>

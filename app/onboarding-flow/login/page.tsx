@@ -51,7 +51,7 @@ export default function LoginPage() {
           </div>
           {/* Primary Login Button */}
           <button
-            onClick={() => router.push('/')}
+            onClick={() => router.push('/home')}
             type="button"
             className="w-full h-14 bg-primary text-white font-bold rounded-2xl shadow-lg shadow-primary/20 hover:bg-premium-teal transition-all active:scale-[0.98]"
           >

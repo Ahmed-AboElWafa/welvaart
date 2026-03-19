@@ -23,7 +23,7 @@ export default function FiatPage() {
       {/* Header */}
       <header className="px-6 py-4 flex items-center gap-4">
         <button
-          onClick={() => router.push('/')}
+          onClick={() => router.push('/home')}
           className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700"
         >
           <span className="material-symbols-outlined text-primary">arrow_back_ios_new</span>

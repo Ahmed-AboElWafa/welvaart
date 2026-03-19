@@ -1,8 +1,11 @@
 'use client'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 export default function CreateAccountPage() {
   const router = useRouter()
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
 
   return (
     <div className="bg-background-light dark:bg-background-dark min-h-screen flex flex-col">
@@ -48,23 +51,36 @@ export default function CreateAccountPage() {
           <p className="text-primary dark:text-slate-300 text-sm font-semibold pb-2">Password</p>
           <div className="relative">
             <input
-              className="w-full rounded-2xl text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 h-14 placeholder:text-slate-400 px-4 text-base"
+              className="w-full rounded-2xl text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 h-14 placeholder:text-slate-400 px-4 pr-12 text-base"
               placeholder="Create a strong password"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
             />
-            <button className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
-              <span className="material-symbols-outlined">visibility</span>
+            <button
+              type="button"
+              onClick={() => setShowPassword(v => !v)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400"
+            >
+              <span className="material-symbols-outlined">{showPassword ? 'visibility_off' : 'visibility'}</span>
             </button>
           </div>
         </label>
         {/* Confirm Password Input */}
         <label className="flex flex-col w-full">
           <p className="text-primary dark:text-slate-300 text-sm font-semibold pb-2">Confirm Password</p>
-          <input
-            className="w-full rounded-2xl text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 h-14 placeholder:text-slate-400 px-4 text-base"
-            placeholder="Repeat your password"
-            type="password"
-          />
+          <div className="relative">
+            <input
+              className="w-full rounded-2xl text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/20 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 h-14 placeholder:text-slate-400 px-4 pr-12 text-base"
+              placeholder="Repeat your password"
+              type={showConfirm ? 'text' : 'password'}
+            />
+            <button
+              type="button"
+              onClick={() => setShowConfirm(v => !v)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400"
+            >
+              <span className="material-symbols-outlined">{showConfirm ? 'visibility_off' : 'visibility'}</span>
+            </button>
+          </div>
         </label>
       </div>
 

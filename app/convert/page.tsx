@@ -132,7 +132,7 @@ export default function ConvertPage() {
       {/* Header */}
       <header className="flex items-center px-4 py-3 shrink-0">
         <button
-          onClick={() => router.push('/')}
+          onClick={() => router.push('/home')}
           className="flex size-10 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
         >
           <span className="material-symbols-outlined text-primary">arrow_back_ios_new</span>

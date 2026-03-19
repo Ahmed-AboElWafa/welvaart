@@ -77,7 +77,7 @@ function FiatSuccessContent() {
           <span className="material-symbols-outlined text-lg">account_balance</span>
           View Account
         </button>
-        <button onClick={() => router.push('/')} className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-primary font-bold py-4 rounded-2xl transition-all flex items-center justify-center gap-2">
+        <button onClick={() => router.push('/home')} className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-primary font-bold py-4 rounded-2xl transition-all flex items-center justify-center gap-2">
           Done
         </button>
       </footer>

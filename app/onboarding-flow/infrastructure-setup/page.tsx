@@ -95,7 +95,7 @@ export default function InfrastructureSetupPage() {
       {/* Primary Action */}
       <footer className="px-6 pt-6 pb-10 mt-auto">
         <button
-          onClick={() => router.push('/')}
+          onClick={() => router.push('/home')}
           className="w-full bg-primary hover:bg-premium-teal text-white font-bold py-4 rounded-2xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2"
         >
           Enter Dashboard

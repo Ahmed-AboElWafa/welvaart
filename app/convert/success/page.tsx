@@ -13,7 +13,7 @@ function ConvertSuccessContent() {
   const toId = searchParams?.get('toId') || 'btc'
   const amountStr = searchParams?.get('amount') || '0'
   const convertedStr = searchParams?.get('converted') || '0'
-  
+
   const amountNum = parseFloat(amountStr) || 0
   const convertedNum = parseFloat(convertedStr) || 0
 
@@ -36,7 +36,7 @@ function ConvertSuccessContent() {
 
   const from = AVAILABLE_ASSETS.find(a => a.id === fromId) || AVAILABLE_ASSETS[0]
   const to = AVAILABLE_ASSETS.find(a => a.id === toId) || AVAILABLE_ASSETS[1]
-  
+
   if (!from || !to) return null
 
   const rate = to.rateToUSD / from.rateToUSD
@@ -58,7 +58,7 @@ function ConvertSuccessContent() {
             <div className="flex flex-col items-center justify-center gap-1">
               <span className="text-xs text-slate-400 font-medium">Received Amount</span>
               <div className="flex items-baseline gap-2 text-primary dark:text-white">
-                <span className="text-3xl font-bold">{convertedNum < 0.000001 ? convertedNum.toExponential(4) : parseFloat(convertedNum.toFixed(6))}</span>
+                <span className="text-3xl font-bold">{convertedNum < 0.000001 ? convertedNum.toExponential(4) : parseFloat(convertedNum.toFixed(4))}</span>
                 <span className="text-xl font-medium">{to.symbol}</span>
               </div>
             </div>
@@ -67,16 +67,16 @@ function ConvertSuccessContent() {
             <div className="space-y-4">
               <div className="flex justify-between items-center text-sm">
                 <span className="text-slate-500 dark:text-slate-400">Converted</span>
-                <span className="font-bold text-slate-800 dark:text-slate-100 text-right">{parseFloat(amountNum.toFixed(6))} {from.symbol}</span>
+                <span className="font-bold text-slate-800 dark:text-slate-100 text-right">{parseFloat(amountNum.toFixed(4))} {from.symbol}</span>
               </div>
               <div className="flex justify-between items-center text-sm">
                 <span className="text-slate-500 dark:text-slate-400">Received</span>
-                <span className="font-bold text-primary dark:text-accent text-right">{parseFloat(convertedNum.toFixed(6))} {to.symbol}</span>
+                <span className="font-bold text-primary dark:text-accent text-right">{parseFloat(convertedNum.toFixed(4))} {to.symbol}</span>
               </div>
               <div className="pt-4 border-t border-slate-100 dark:border-slate-800/50 space-y-4">
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-slate-500 dark:text-slate-400">Exchange Rate</span>
-                  <span className="font-semibold text-slate-700 dark:text-slate-200 text-right">1 {from.symbol} = {rate < 0.0001 ? rate.toExponential(4) : parseFloat(rate.toFixed(6))} {to.symbol}</span>
+                  <span className="font-semibold text-slate-700 dark:text-slate-200 text-right">1 {from.symbol} = {rate < 0.0001 ? rate.toExponential(4) : parseFloat(rate.toFixed(4))} {to.symbol}</span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-slate-500 dark:text-slate-400">Total Fees</span>
@@ -100,7 +100,7 @@ function ConvertSuccessContent() {
             <span className="material-symbols-outlined text-xl">share</span>
             <span>Share Receipt</span>
           </button>
-          <button onClick={() => router.push('/')} className="w-full bg-premium-teal hover:bg-slate-900 py-4 rounded-2xl text-white font-bold text-lg shadow-lg shadow-primary/20 active:scale-[0.98] transition-all">
+          <button onClick={() => router.push('/home')} className="w-full bg-premium-teal hover:bg-slate-900 py-4 rounded-2xl text-white font-bold text-lg shadow-lg shadow-primary/20 active:scale-[0.98] transition-all">
             Done
           </button>
         </div>

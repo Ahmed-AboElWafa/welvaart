@@ -144,9 +144,12 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const fiatRates: Record<string, number> = { usd: 1, eur: 1.085, gbp: 1.27, chf: 1.12, aed: 0.272, cad: 0.741, jpy: 0.00667 };
   let dynamicPortfolio = data?.portfolio || null;
   
+  const KNOWN_SYMBOLS = ['د.إ', '€', '£', '¥', 'CHF', '$'];
   if (data?.portfolio && data?.fiatAccounts) {
     const totalFiatUSD = data.fiatAccounts.reduce((sum, acc) => {
-      const numBalance = parseFloat(acc.balance.replace(/د\.إ/g, '').replace(/[^0-9.-]+/g, '')) || 0;
+      let s = acc.balance;
+      for (const sym of KNOWN_SYMBOLS) s = s.replaceAll(sym, '');
+      const numBalance = parseFloat(s.replace(/[^0-9.]/g, '')) || 0;
       const rate = fiatRates[acc.id] || 1;
       return sum + (numBalance * rate);
     }, 0);

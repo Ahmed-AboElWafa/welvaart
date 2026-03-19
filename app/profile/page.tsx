@@ -19,7 +19,7 @@ export default function ProfilePage() {
     <>
       <div className="h-4 w-full"></div>
       <header className="px-6 py-4 flex items-center relative">
-        <button onClick={() => router.back()} className="w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-primary dark:text-accent active:scale-90 transition-transform">
+        <button onClick={() => router.push('/home')} className="w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-primary dark:text-accent active:scale-90 transition-transform">
           <span className="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
         </button>
         <h1 className="absolute left-1/2 -translate-x-1/2 font-display text-2xl text-primary dark:text-white">Profile</h1>
@@ -73,7 +73,7 @@ export default function ProfilePage() {
             <span className="font-semibold text-slate-800 dark:text-slate-200">Connected Exchanges</span>
             <span className="material-symbols-outlined ml-auto text-slate-400">chevron_right</span>
           </button>
-          <button onClick={() => router.push('/transactions')} className="w-full flex items-center gap-4 p-4 glass-card rounded-2xl settings-row transition-all">
+          <button className="w-full flex items-center gap-4 p-4 glass-card rounded-2xl settings-row transition-all">
             <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
               <span className="material-symbols-outlined text-primary dark:text-accent">history</span>
             </div>
@@ -89,7 +89,7 @@ export default function ProfilePage() {
           </button>
         </section>
         <button className="w-full mt-8 py-4 text-rose-500 font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
-          <span className="material-symbols-outlined">logout</span>
+          <span onClick={() => { router.push('/login') }} className="material-symbols-outlined">logout</span>
           Sign Out
         </button>
       </main>

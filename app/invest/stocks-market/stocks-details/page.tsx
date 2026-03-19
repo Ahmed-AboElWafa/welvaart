@@ -1,12 +1,146 @@
 'use client'
-import React, { Suspense } from 'react'
+import React, { Suspense, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { MARKET } from '../stocks'
+
+/* ─── Realistic stock price data per time range ─── */
+const CHART_DATA: Record<string, number[]> = {
+  '1D': [189.18, 189.19, 189.19, 189.20, 189.20, 189.20, 189.21, 189.21, 189.21, 189.22, 189.22, 189.22, 189.23, 189.23, 189.23, 189.24, 189.24, 189.24, 189.25, 189.25, 189.25, 189.26, 189.27, 189.30],
+  '1W': [189.00, 189.01, 189.02, 189.03, 189.04, 189.05, 189.06, 189.07, 189.08, 189.09, 189.10, 189.11, 189.12, 189.13, 189.14, 189.15, 189.16, 189.17, 189.18, 189.19, 189.20, 189.21, 189.22, 189.30],
+  '1M': [188.40, 188.43, 188.46, 188.49, 188.52, 188.55, 188.57, 188.60, 188.62, 188.65, 188.67, 188.70, 188.72, 188.75, 188.77, 188.80, 188.82, 188.85, 188.87, 188.90, 188.92, 188.95, 188.97, 189.30],
+  '1Y': [142.00, 145.20, 148.30, 151.20, 153.90, 156.40, 158.70, 160.80, 162.70, 164.40, 165.90, 167.20, 168.35, 169.30, 170.10, 170.75, 171.25, 171.65, 171.95, 172.30, 172.80, 173.50, 174.45, 189.30],
+  'ALL': [95.00, 102.00, 108.50, 114.50, 120.00, 125.00, 129.50, 133.50, 137.00, 140.00, 142.50, 144.50, 146.20, 147.60, 148.80, 149.80, 150.60, 151.30, 151.90, 152.40, 152.80, 153.10, 153.30, 189.30],
+}
+
+const TIME_LABELS: Record<string, string[]> = {
+  '1D': ['9AM', '11AM', '1PM', '3PM'],
+  '1W': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+  '1M': ['W1', 'W2', 'W3', 'W4'],
+  '1Y': ['Jan', 'Apr', 'Jul', 'Oct'],
+  'ALL': ["'20", "'21", "'22", "'23", "'24"],
+}
+
+function buildPath(data: number[], w = 400, h = 160, pad = 10): { line: string; area: string } {
+  const min = Math.min(...data)
+  const max = Math.max(...data)
+  const range = max - min || 1
+  const xs = data.map((_, i) => (i / (data.length - 1)) * w)
+  const ys = data.map(v => h - pad - ((v - min) / range) * (h - pad * 2))
+
+  const pts = xs.map((x, i) => [x, ys[i]] as [number, number])
+
+  // Smooth using cardinal spline-like control points
+  let line = `M ${pts[0][0]},${pts[0][1]}`
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[Math.max(i - 1, 0)]
+    const p1 = pts[i]
+    const p2 = pts[i + 1]
+    const p3 = pts[Math.min(i + 2, pts.length - 1)]
+    const cp1x = p1[0] + (p2[0] - p0[0]) / 6
+    const cp1y = p1[1] + (p2[1] - p0[1]) / 6
+    const cp2x = p2[0] - (p3[0] - p1[0]) / 6
+    const cp2y = p2[1] - (p3[1] - p1[1]) / 6
+    line += ` C ${cp1x},${cp1y} ${cp2x},${cp2y} ${p2[0]},${p2[1]}`
+  }
+  const area = `${line} L ${pts[pts.length - 1][0]},${h} L ${pts[0][0]},${h} Z`
+  return { line, area }
+}
+
+function StocksChart({ price, isUp }: { price: number; isUp: boolean }) {
+  const [activeRange, setActiveRange] = useState('1M')
+  const data = CHART_DATA[activeRange]
+  const { line, area } = buildPath(data, 400, 160)
+
+  const min = Math.min(...data)
+  const max = Math.max(...data)
+  const yLabels = [max, (max + min) / 2, min].map(v => `$${v.toFixed(2)}`)
+  const timeLabels = TIME_LABELS[activeRange]
+  const color = isUp ? '#10b981' : '#f43f5e'
+  const lastX = 400
+  const lastY = 160 - 10 - ((data[data.length - 1] - min) / (max - min || 1)) * (160 - 20)
+
+  return (
+    <div className="bg-white dark:bg-slate-800 rounded-[2rem] p-4 shadow-sm border border-slate-100 dark:border-slate-700 mb-4">
+      {/* Chart area */}
+      <div className="relative w-full" style={{ height: 180 }}>
+        {/* Y-axis price labels */}
+        <div className="absolute left-0 top-0 h-full flex flex-col justify-between py-1 pr-2 z-10">
+          {yLabels.map((l, i) => (
+            <span key={i} className="text-[9px] text-slate-400 font-medium leading-none">{l}</span>
+          ))}
+        </div>
+
+        {/* SVG chart area */}
+        <div className="absolute left-10 right-0 top-0 bottom-5 overflow-hidden rounded-xl">
+          <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 160">
+            <defs>
+              <linearGradient id="stockAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor={color} stopOpacity={0.25} />
+                <stop offset="100%" stopColor={color} stopOpacity={0} />
+              </linearGradient>
+            </defs>
+
+            {/* Horizontal grid lines */}
+            {[0.15, 0.5, 0.85].map((pct, i) => (
+              <line key={i} x1="0" x2="400" y1={160 * pct} y2={160 * pct}
+                stroke="currentColor" strokeOpacity={0.07} strokeWidth="1" strokeDasharray="4 4" />
+            ))}
+
+            {/* Area fill */}
+            <path d={area} fill="url(#stockAreaGrad)" />
+
+            {/* Line */}
+            <path d={line} fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+
+            {/* Latest price dot + pulse ring */}
+            <circle cx={lastX} cy={lastY} r="5" fill={color} />
+            <circle cx={lastX} cy={lastY} r="9" fill={color} fillOpacity={0.2} />
+
+            {/* Dotted vertical tether to axis */}
+            <line x1={lastX} y1={lastY + 10} x2={lastX} y2="160"
+              stroke={color} strokeOpacity={0.4} strokeWidth="1.5" strokeDasharray="3 3" />
+          </svg>
+        </div>
+
+        {/* Price tooltip at latest point */}
+        <div className="absolute right-1 z-20" style={{ top: Math.max(0, (lastY / 160) * 100 - 12) + '%' }}>
+          <div className="text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md shadow-lg whitespace-nowrap"
+            style={{ backgroundColor: color }}>
+            ${price.toFixed(2)}
+          </div>
+        </div>
+
+        {/* X-axis time labels */}
+        <div className="absolute left-10 right-0 bottom-0 flex justify-between">
+          {timeLabels.map((l, i) => (
+            <span key={i} className="text-[9px] text-slate-400 font-medium">{l}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* Range selector */}
+      <div className="flex justify-between items-center bg-slate-200/50 dark:bg-slate-800/50 p-1.5 rounded-2xl mt-2">
+        {(['1D', '1W', '1M', '1Y', 'ALL'] as const).map((range) => (
+          <button
+            key={range}
+            onClick={() => setActiveRange(range)}
+            className={`flex-1 py-1.5 text-xs font-bold rounded-xl transition-all ${range === activeRange
+                ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm'
+                : 'text-slate-500'
+              }`}
+          >
+            {range}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 function StocksDetailsContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  
+
   const stockId = searchParams?.get('stockId') || 'aapl'
   const marketStock = MARKET.find(m => m.id === stockId) || MARKET[0]
 
@@ -52,28 +186,7 @@ function StocksDetailsContent() {
 
         {/* Chart */}
         <section className="mb-8">
-          <div className="h-56 relative w-full mb-4">
-            <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 200">
-              <defs>
-                <linearGradient id="chartGradient" x1="0%" x2="0%" y1="0%" y2="100%">
-                  <stop offset="0%" style={{ stopColor: '#10b981', stopOpacity: 0.3 }} />
-                  <stop offset="100%" style={{ stopColor: '#10b981', stopOpacity: 0 }} />
-                </linearGradient>
-              </defs>
-              <path d="M0 150 Q 50 140, 100 160 T 200 100 T 300 120 T 400 40" fill="none" stroke="#10b981" strokeWidth="3" />
-              <path d="M0 150 Q 50 140, 100 160 T 200 100 T 300 120 T 400 40 V 200 H 0 Z" fill="url(#chartGradient)" />
-            </svg>
-          </div>
-          <div className="flex justify-between items-center bg-slate-200/50 dark:bg-slate-800/50 p-1.5 rounded-2xl">
-            {['1D', '1W', '1M', '1Y', 'ALL'].map((range) => (
-              <button
-                key={range}
-                className={`flex-1 py-1.5 text-xs font-bold rounded-xl transition-colors ${range === '1M' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500'}`}
-              >
-                {range}
-              </button>
-            ))}
-          </div>
+          <StocksChart price={marketStock.price} isUp={marketStock.up} />
         </section>
 
         {/* Key Stats */}
@@ -102,35 +215,6 @@ function StocksDetailsContent() {
           </p>
           <button className="mt-2 text-sm font-bold text-primary dark:text-accent">Show more</button>
         </section>
-
-        {/* Top News */}
-        {/* <section className="mb-8">
-          <h2 className="text-lg font-bold mb-4">Top News</h2>
-          <div className="space-y-4">
-            {[
-              {
-                source: 'Bloomberg • 2h ago',
-                title: 'Tech Giant Announces New AI Integration for Upcoming Product Line',
-                img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBoMgra1moGxnomBmoNcDY_bD4vPo3ENG5V7J69DOEb5l7E3i3OTrvsQVhjoEOyUeEZX2n18XwTjE6pTrdH5d8EHYz7XhYVGdA1rOWpvzcO4ezqYIbIKtSeGfoBYDJiPiqLbwfVFyFfKoUvDUg-pEAeNdMf2MqJx4LhmAPCY8DTgDu1nL5tv-MmLfRTf6Ic4z__XjAzU8l_5AEl2IrHrmHaS0J42oyvcbOSC0KRogiwFhrr4q4mMJ-sB4LWfUjqXr4T1iSD2A7kEWoL',
-              },
-              {
-                source: 'Reuters • 5h ago',
-                title: 'Analysts Raise Price Target Following Strong Services Growth',
-                img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBdsmQr5fyiIVfiAAil-Zcmz1vxjdFzRBsF8cWbT7DJRZIw-HP4h_FcTuGICzidMzVkcBC1LE6sHJ0kSBlwMwEKoVWRnTnF99rcvaAxGS5l1QFzQJVv26UaWydxfAqPgOhAF-rV23C_qQKge7WxHX4OCxv3jdJ4f43DqPSHjrZjFgLYNi8ANpWnDqbM9K1muxvPeYMz3o6QrddsXQyZ9zFN5fKVlnw1C9ZsRNVQmB4bRN6io1w2TD3iYZpc8oCjlE131tQtGx0MSi3Z',
-              },
-            ].map((news) => (
-              <div key={news.source} className="flex gap-4 items-start">
-                <div className="flex-1">
-                  <p className="text-[10px] text-accent font-bold uppercase tracking-wider mb-1">{news.source}</p>
-                  <h3 className="text-sm font-bold leading-snug">{news.title}</h3>
-                </div>
-                <div className="w-20 h-20 rounded-2xl bg-slate-200 dark:bg-slate-800 overflow-hidden shrink-0">
-                  <img alt="News" className="w-full h-full object-cover" src={news.img} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </section> */}
 
         {/* CTA */}
         <div className="mt-4">
