@@ -1,4 +1,4 @@
-# Welvaart — Next.js Interactive Prototype
+# Welvaart — Interactive Prototype
 
 A fully connected, interactive prototype of the Welvaart financial platform, converted from 50 Stitch-designed HTML pages into a working Next.js 14 application.
 
