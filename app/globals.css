@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #F8FAFC;
+    --foreground: #0f172a;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .dark .glass-card {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .interactive-card {
+    border: 1.5px solid #135D77;
+    background: linear-gradient(135deg, rgba(19, 93, 119, 0.03) 0%, rgba(255, 255, 255, 0.7) 100%);
+  }
+  .dark .interactive-card {
+    border: 1.5px solid #0A3B49;
+    background: linear-gradient(135deg, rgba(10, 59, 73, 0.2) 0%, rgba(30, 41, 59, 0.7) 100%);
+  }
+  .ios-status-bar {
+    height: 44px;
+  }
+  .ios-blur {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .active-tab .material-symbols-outlined {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .clickable-card {
+    transition: all 0.2s ease;
+  }
+  .clickable-card:active {
+    transform: scale(0.98);
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .asset-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1.5px solid rgba(19, 93, 119, 0.12);
+    box-shadow: 0 4px 24px rgba(19, 93, 119, 0.06);
+  }
+  .dark .asset-card {
+    background: rgba(13, 36, 43, 0.8);
+    border: 1.5px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  }
+  .receipt-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(19, 93, 119, 0.1);
+    box-shadow: 0 8px 32px rgba(19, 93, 119, 0.08);
+  }
+  .dark .receipt-card {
+    background: rgba(13, 36, 43, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  .swap-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 0;
+    position: relative;
+    z-index: 10;
+    margin: 0;
+  }
+}
+
+body {
+  min-height: max(884px, 100dvh);
+  font-family: 'Inter', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
