@@ -2,18 +2,6 @@
 
 A fully connected, interactive prototype of the Welvaart financial platform, converted from 50 Stitch-designed HTML pages into a working Next.js 14 application.
 
-## 🚀 Getting Started
-
-```bash
-# Install dependencies
-npm install
-
-# Run the development server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
 ## 📱 App Structure
 
 The app is designed as a mobile-first interface (max-width 430px) and includes:
