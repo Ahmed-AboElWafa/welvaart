@@ -14,7 +14,7 @@ function SendGoldReviewContent() {
   const [isProcessing, setIsProcessing] = useState(false)
 
   const amountStr = searchParams?.get('amount') || '0'
-  const rName = searchParams?.get('name') || 'Welvaart User'
+  const rName = searchParams?.get('name') || 'GlobalFin User'
   const rHandle = searchParams?.get('handle') || '@username'
   const rAvatar = searchParams?.get('avatar') || ''
 

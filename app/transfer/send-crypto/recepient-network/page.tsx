@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
-type Method = 'welvaart' | 'external' | null
+type Method = 'globalfin' | 'external' | null
 
 const NETWORKS = [
   { id: 'erc20', label: 'ERC-20', sub: 'Ethereum Mainnet', icon: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAwQx-UFT9Q6gDYYN5Ae8W0ZZljCEz96fA4ZFs8MjkSi_Tv9SI5IRIbfRl0gGppKaET0zNPcbx8cmgi1nw8w2ZYrULn3cq8TK3Ij_4RZRk5f6j6b-6ISW17pKkq9kKCT-oiNG8TESs1Pa596LfJwgfAzyotmp1wg35DTB47t9t5Huw0J8Sf8fv3a9VopimWl48gROrFiMsu2z-ZvCtfSntDkAFo-rsYUUgVaqnHPBNlBJ6GJTP3WVzkMG4hG587LdfDBAb8_5xSPkTQ' },
@@ -23,9 +23,9 @@ export default function SendCryptoRecipientNetworkPage() {
 
   const [activeMethod, setActiveMethod] = useState<Method>(null)
 
-  // Welvaart form
+  // GlobalFin form
   const [gfIdentifier, setGfIdentifier] = useState('')
-  const canProceedWelvaart = gfIdentifier.trim().length > 0
+  const canProceedGlobalFin = gfIdentifier.trim().length > 0
 
   // External wallet form
   const [walletAddress, setWalletAddress] = useState('')
@@ -73,28 +73,28 @@ export default function SendCryptoRecipientNetworkPage() {
           <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Transfer Methods</h3>
           <div className="grid grid-cols-1 gap-3">
 
-            {/* — To Welvaart User — */}
+            {/* — To GlobalFin User — */}
             <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 transition-all">
               <button
-                onClick={() => handleMethodSelect('welvaart')}
-                className={`flex items-center p-5 w-full text-left group transition-colors ${activeMethod === 'welvaart' ? 'bg-primary/5' : 'bg-[#F8FAFC] hover:bg-slate-50'}`}
+                onClick={() => handleMethodSelect('globalfin')}
+                className={`flex items-center p-5 w-full text-left group transition-colors ${activeMethod === 'globalfin' ? 'bg-primary/5' : 'bg-[#F8FAFC] hover:bg-slate-50'}`}
               >
-                <div className={`size-12 rounded-lg flex items-center justify-center mr-4 transition-all group-hover:scale-105 ${activeMethod === 'welvaart' ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
+                <div className={`size-12 rounded-lg flex items-center justify-center mr-4 transition-all group-hover:scale-105 ${activeMethod === 'globalfin' ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
                   <span className="material-symbols-outlined text-3xl">bolt</span>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
-                    <p className="font-bold text-slate-900 dark:text-white text-base">To Welvaart User</p>
+                    <p className="font-bold text-slate-900 dark:text-white text-base">To GlobalFin User</p>
                     <span className="text-[10px] bg-primary text-white px-2 py-0.5 rounded-full font-bold uppercase">Instant</span>
                   </div>
                   <p className="text-xs text-slate-500">Send via phone or username</p>
                 </div>
-                <span className={`material-symbols-outlined ml-3 text-slate-400 transition-transform duration-200 ${activeMethod === 'welvaart' ? 'rotate-90 text-primary' : ''}`}>chevron_right</span>
+                <span className={`material-symbols-outlined ml-3 text-slate-400 transition-transform duration-200 ${activeMethod === 'globalfin' ? 'rotate-90 text-primary' : ''}`}>chevron_right</span>
               </button>
 
-              {activeMethod === 'welvaart' && (
+              {activeMethod === 'globalfin' && (
                 <div className="px-5 pb-5 pt-3 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
-                  <p className="text-xs text-slate-500 mb-3 font-medium">Enter the recipient&apos;s phone number or Welvaart username</p>
+                  <p className="text-xs text-slate-500 mb-3 font-medium">Enter the recipient&apos;s phone number or GlobalFin username</p>
                   <div className="relative mb-4">
                     <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">person_search</span>
                     <input
@@ -106,8 +106,8 @@ export default function SendCryptoRecipientNetworkPage() {
                     />
                   </div>
                   <button
-                    onClick={() => router.push(`/transfer/send-crypto/crypto-amount?name=Welvaart%20User&handle=${encodeURIComponent(gfIdentifier)}&avatar=`)}
-                    disabled={!canProceedWelvaart}
+                    onClick={() => router.push(`/transfer/send-crypto/crypto-amount?name=GlobalFin%20User&handle=${encodeURIComponent(gfIdentifier)}&avatar=`)}
+                    disabled={!canProceedGlobalFin}
                     className="w-full py-3.5 rounded-xl bg-primary text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md shadow-primary/20 active:scale-[0.98] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     Continue

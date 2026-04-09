@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 
-type Method = 'welvaart' | 'bank' | null
+type Method = 'globalfin' | 'bank' | null
 
 interface SavedRecipient {
   name: string
@@ -18,7 +18,7 @@ export default function SendFiatSelectRecipientPage() {
   const router = useRouter()
   const [activeMethod, setActiveMethod] = useState<Method>(null)
 
-  // Welvaart User form state
+  // GlobalFin User form state
   const [gfIdentifier, setGfIdentifier] = useState('')
 
   // Bank Account form state
@@ -41,7 +41,7 @@ export default function SendFiatSelectRecipientPage() {
     setActiveMethod(prev => prev === method ? null : method)
   }
 
-  const canProceedWelvaart = gfIdentifier.trim().length > 0
+  const canProceedGlobalFin = gfIdentifier.trim().length > 0
   const canProceedBank = bankName.trim().length > 0 && bankCountry.trim().length > 0 && bankIban.trim().length > 0 && bankSwift.trim().length > 0
 
   const goToAmount = (rName: string, rIban: string, rSwift: string, rHandle: string) => {
@@ -86,31 +86,31 @@ export default function SendFiatSelectRecipientPage() {
           <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Transfer Methods</h3>
           <div className="grid grid-cols-1 gap-3">
 
-            {/* Welvaart User */}
+            {/* GlobalFin User */}
             <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 transition-all">
-              <button onClick={() => handleMethodSelect('welvaart')} className={`flex items-center p-5 w-full text-left group transition-colors ${activeMethod === 'welvaart' ? 'bg-primary/5 border-primary' : 'bg-[#F8FAFC] dark:bg-slate-800 hover:bg-slate-50'}`}>
-                <div className={`size-12 rounded-lg flex items-center justify-center mr-4 transition-all group-hover:scale-105 ${activeMethod === 'welvaart' ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
+              <button onClick={() => handleMethodSelect('globalfin')} className={`flex items-center p-5 w-full text-left group transition-colors ${activeMethod === 'globalfin' ? 'bg-primary/5 border-primary' : 'bg-[#F8FAFC] dark:bg-slate-800 hover:bg-slate-50'}`}>
+                <div className={`size-12 rounded-lg flex items-center justify-center mr-4 transition-all group-hover:scale-105 ${activeMethod === 'globalfin' ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
                   <span className="material-symbols-outlined text-3xl">bolt</span>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
-                    <p className="font-bold text-slate-900 dark:text-white text-base">To Welvaart User</p>
+                    <p className="font-bold text-slate-900 dark:text-white text-base">To GlobalFin User</p>
                     <span className="text-[10px] bg-primary text-white px-2 py-0.5 rounded-full font-bold uppercase">Instant</span>
                   </div>
                   <p className="text-xs text-slate-500">Send via phone or username</p>
                 </div>
-                <span className={`material-symbols-outlined ml-3 text-slate-400 transition-transform duration-200 ${activeMethod === 'welvaart' ? 'rotate-90 text-primary' : ''}`}>chevron_right</span>
+                <span className={`material-symbols-outlined ml-3 text-slate-400 transition-transform duration-200 ${activeMethod === 'globalfin' ? 'rotate-90 text-primary' : ''}`}>chevron_right</span>
               </button>
-              {activeMethod === 'welvaart' && (
+              {activeMethod === 'globalfin' && (
                 <div className="px-5 pb-5 pt-3 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
-                  <p className="text-xs text-slate-500 mb-3 font-medium">Enter the recipient&apos;s phone number or Welvaart username</p>
+                  <p className="text-xs text-slate-500 mb-3 font-medium">Enter the recipient&apos;s phone number or GlobalFin username</p>
                   <div className="relative mb-4">
                     <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">person_search</span>
                     <input value={gfIdentifier} onChange={e => setGfIdentifier(e.target.value)} placeholder="+1 555 000 0000 or @username" className="w-full pl-12 pr-4 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all placeholder:text-slate-400" type="text" />
                   </div>
                   <button
-                    onClick={() => goToAmount('Welvaart User', gfIdentifier, '', gfIdentifier)}
-                    disabled={!canProceedWelvaart}
+                    onClick={() => goToAmount('GlobalFin User', gfIdentifier, '', gfIdentifier)}
+                    disabled={!canProceedGlobalFin}
                     className="w-full py-3.5 rounded-xl bg-primary text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md shadow-primary/20 active:scale-[0.98] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     Continue <span className="material-symbols-outlined text-base">arrow_forward</span>

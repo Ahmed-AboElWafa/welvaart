@@ -15,7 +15,7 @@ function CryptoAmountContent() {
   const searchParams = useSearchParams()
   const { cryptoHoldings } = useApp()
 
-  const rName   = searchParams?.get('name') || 'Welvaart User'
+  const rName   = searchParams?.get('name') || 'GlobalFin User'
   const rHandle = searchParams?.get('handle') || '@username'
   const rAvatar = searchParams?.get('avatar') || ''
 

@@ -124,7 +124,7 @@ function SendFiatReviewContent() {
         {/* Security Disclaimer */}
         <div className="mt-6 flex items-start gap-3 px-2">
           <span className="material-symbols-outlined text-primary text-sm mt-0.5 opacity-80">shield_lock</span>
-          <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Your transaction is protected by Welvaart Secure encryption. By clicking confirm, you agree to our terms of service and transfer policies.</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Your transaction is protected by GlobalFin Secure encryption. By clicking confirm, you agree to our terms of service and transfer policies.</p>
         </div>
       </main>
 

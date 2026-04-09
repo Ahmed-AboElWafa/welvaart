@@ -15,7 +15,7 @@ function FinalReviewContent() {
   const stockName = searchParams?.get('name') || ''
   const sharesStr = searchParams?.get('shares') || '0'
   const usdStr    = searchParams?.get('usd') || '0'
-  const rName     = searchParams?.get('rName') || 'Welvaart User'
+  const rName     = searchParams?.get('rName') || 'GlobalFin User'
   const rHandle   = searchParams?.get('rHandle') || '@username'
   const rAvatar   = searchParams?.get('rAvatar') || ''
   const priceStr  = searchParams?.get('price') || '0'
@@ -134,7 +134,7 @@ function FinalReviewContent() {
                 <span className="text-slate-500 text-sm">Recipient</span>
                 <div className="text-right">
                   <p className="text-slate-900 dark:text-white text-sm font-bold">{rHandle}</p>
-                  <p className="text-primary text-[10px] font-bold uppercase tracking-wider">Welvaart ID</p>
+                  <p className="text-primary text-[10px] font-bold uppercase tracking-wider">GlobalFin ID</p>
                 </div>
               </div>
               <div className="border-t border-slate-200/60 dark:border-slate-700 my-4" />

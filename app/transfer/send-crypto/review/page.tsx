@@ -17,7 +17,7 @@ function SendCryptoReviewContent() {
   const usd        = searchParams?.get('usd') || '0'
   const gasFee     = searchParams?.get('gasFee') || '0'
   const totCrypto  = searchParams?.get('totCrypto') || '0'
-  const rName      = searchParams?.get('rName') || 'Welvaart User'
+  const rName      = searchParams?.get('rName') || 'GlobalFin User'
   const rHandle    = searchParams?.get('rHandle') || '@username'
   const rAvatar    = searchParams?.get('rAvatar') || ''
 

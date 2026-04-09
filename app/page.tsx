@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import welvaartBg from './welvaart.jpg'
+import globalfinBg from './globalfin.jpg'
 
 export default function OnboardingWelcomePage() {
   const router = useRouter()
@@ -12,12 +12,12 @@ export default function OnboardingWelcomePage() {
       <div className="flex-grow flex flex-col justify-center px-6 py-6">
         <div
           className="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-center items-center overflow-hidden rounded-2xl min-h-[250px] relative bg-slate-100 dark:bg-slate-900/50 shadow-inner"
-          style={{ backgroundImage: `url(${welvaartBg.src})` }}
+          style={{ backgroundImage: `url(${globalfinBg.src})` }}
         >
         </div>
         {/* Typography */}
         <div className="mt-8 text-center">
-          <h1 className="text-primary dark:text-white tracking-tight text-3xl font-display font-bold leading-tight mb-3">Welcome to Welvaart</h1>
+          <h1 className="text-primary dark:text-white tracking-tight text-3xl font-display font-bold leading-tight mb-3">Welcome to GlobalFin</h1>
           <p className="text-slate-600 dark:text-slate-300 text-base font-normal leading-relaxed px-4">
             A global wealth platform combining crypto, banking, and multi-asset investing.
           </p>

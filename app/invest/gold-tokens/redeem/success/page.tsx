@@ -26,7 +26,7 @@ function GoldTokensRedeemSuccessContent() {
       const url = URL.createObjectURL(blob)
       const a = document.createElement('a')
       a.href = url
-      a.download = `Welvaart-Gold-QR-${REDEMPTION_REF}.png`
+      a.download = `GlobalFin-Gold-QR-${REDEMPTION_REF}.png`
       a.click()
       URL.revokeObjectURL(url)
     } catch {
@@ -120,7 +120,7 @@ function GoldTokensRedeemSuccessContent() {
             <h3 className="font-bold text-sm text-primary dark:text-white uppercase tracking-wide">Next Steps</h3>
           </div>
           <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            A Welvaart representative will reach out via phone within{' '}
+            A GlobalFin representative will reach out via phone within{' '}
             <span className="font-bold text-primary dark:text-accent">24 hours</span> to coordinate your secure physical
             collection.
           </p>

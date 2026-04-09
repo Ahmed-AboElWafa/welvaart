@@ -66,7 +66,7 @@ function SendFiatSuccessContent() {
               <span className="text-slate-500 dark:text-slate-400 text-sm">Recipient</span>
               <div className="text-right">
                 <p className="text-slate-900 dark:text-slate-100 text-sm font-bold">{rName}</p>
-                {rIban && <p className="text-slate-500 text-[10px] font-mono">{rIban.slice(0, 16)}... • Welvaart</p>}
+                {rIban && <p className="text-slate-500 text-[10px] font-mono">{rIban.slice(0, 16)}... • GlobalFin</p>}
               </div>
             </div>
             <div className="border-t border-slate-200/60 dark:border-slate-700 my-4" />
@@ -94,7 +94,7 @@ function SendFiatSuccessContent() {
         <div className="mt-8 px-8 text-center">
           <div className="inline-flex items-center gap-2 bg-primary/5 px-4 py-2 rounded-full border border-primary/10">
             <span className="material-symbols-outlined text-primary text-xs">verified_user</span>
-            <p className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-widest font-bold">Transaction Secured by Welvaart</p>
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-widest font-bold">Transaction Secured by GlobalFin</p>
           </div>
         </div>
       </main>

@@ -21,7 +21,7 @@ export default function InvestPage() {
       <header className="px-6 pt-2 pb-4 sticky top-0 z-40 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
         <div className="flex justify-between items-center mb-6">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Welvaart</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">GlobalFin</p>
             <h1 className="text-3xl font-bold">Investments</h1>
           </div>
         </div>
@@ -166,7 +166,7 @@ export default function InvestPage() {
                   <span className="w-1 h-1 rounded-full bg-primary/20 dark:bg-accent/20"></span>
                 </div>
                 <h4 className="text-sm font-bold leading-tight dark:text-slate-100">Why the upcoming Bitcoin halving differs from previous cycles.</h4>
-                <p className="text-[10px] font-medium text-slate-500">Welvaart Insights • 1h ago</p>
+                <p className="text-[10px] font-medium text-slate-500">GlobalFin Insights • 1h ago</p>
               </div>
             </div>
           </div>

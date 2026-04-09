@@ -38,7 +38,7 @@ export default function DepositBankTransferPage() {
         { icon: 'person', label: 'Beneficiary Name', value: user.name || 'Alex Sterling', mono: false },
         { icon: 'public', label: 'IBAN / Account No', value: activeAccount?.accountId || 'N/A', mono: true },
         { icon: 'account_balance', label: 'SWIFT / BIC', value: activeAccount?.swift || 'N/A', mono: true },
-        { icon: 'location_on', label: 'Bank Address', value: 'Welvaart Trust, 270 Park Ave, NY 10017, USA', mono: false },
+        { icon: 'location_on', label: 'Bank Address', value: 'GlobalFin Trust, 270 Park Ave, NY 10017, USA', mono: false },
     ]
 
     return (

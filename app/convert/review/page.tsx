@@ -142,7 +142,7 @@ function ConvertReviewContent() {
           <span className="text-sm font-medium">Rate expires in <span className="text-primary dark:text-accent font-bold">12s</span></span>
         </div>
         <p className="mt-8 text-[11px] text-slate-400 text-center leading-relaxed px-4">
-          By confirming, you agree to Welvaart's multi-asset exchange terms. Prices are locked until the timer expires.
+          By confirming, you agree to GlobalFin's multi-asset exchange terms. Prices are locked until the timer expires.
         </p>
       </main>
       <footer className="px-6 pt-6 pb-10 mt-4">

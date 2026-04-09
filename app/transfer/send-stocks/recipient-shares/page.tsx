@@ -11,7 +11,7 @@ function RecipientSharesContent() {
   const searchParams = useSearchParams()
   const { stockHoldings } = useApp()
 
-  const rName = searchParams?.get('name') || 'Welvaart User'
+  const rName = searchParams?.get('name') || 'GlobalFin User'
   const rHandle = searchParams?.get('handle') || '@username'
   const rAvatar = searchParams?.get('avatar') || ''
 

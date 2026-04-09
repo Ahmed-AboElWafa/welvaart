@@ -18,7 +18,7 @@ export default function TransferPage() {
         <h2 className="text-xl font-bold flex-1 text-center pr-10 text-base">Transfer Assets</h2>
       </div>
       <main className="px-6">
-        <p className="text-slate-500 mt-2 mb-8">Select the asset type you wish to send. Transfers within Welvaart are instant and free.</p>
+        <p className="text-slate-500 mt-2 mb-8">Select the asset type you wish to send. Transfers within GlobalFin are instant and free.</p>
         <div className="space-y-4">
           <button onClick={() => router.push('/transfer/send-fiat/select-recipient')} className="w-full text-left bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4 active:scale-[0.98] transition-all">
             <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
@@ -26,7 +26,7 @@ export default function TransferPage() {
             </div>
             <div className="flex-1">
               <h3 className="font-semibold text-lg">Send Fiat</h3>
-              <p className="text-sm text-slate-500">To Bank or Welvaart account</p>
+              <p className="text-sm text-slate-500">To Bank or GlobalFin account</p>
             </div>
             <span className="material-icons-round text-slate-400">chevron_right</span>
           </button>

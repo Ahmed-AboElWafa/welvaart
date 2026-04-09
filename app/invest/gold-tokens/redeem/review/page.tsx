@@ -108,7 +108,7 @@ function GoldTokensRedeemReviewContent() {
             <div>
               <p className="text-xs font-semibold text-slate-900 dark:text-white mb-1">Personal Logistics Support</p>
               <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                After confirmation, a dedicated Welvaart representative will contact you within 24 hours to coordinate
+                After confirmation, a dedicated GlobalFin representative will contact you within 24 hours to coordinate
                 secure physical collection or armored transport.
               </p>
             </div>

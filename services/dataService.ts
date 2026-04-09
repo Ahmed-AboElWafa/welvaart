@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'welvaart_data_v2';
+const STORAGE_KEY = 'globalfin_data_v2';
 
 export interface User {
   name: string;

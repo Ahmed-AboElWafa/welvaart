@@ -95,7 +95,7 @@ function StocksMarketSuccessContent() {
         <div className="mt-6 flex justify-center">
           <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 px-5 py-2.5 rounded-full border border-emerald-100 dark:border-emerald-500/20">
             <span className="material-icons-round text-base">verified_user</span>
-            <span className="text-xs font-bold uppercase tracking-wider">Secured via Welvaart</span>
+            <span className="text-xs font-bold uppercase tracking-wider">Secured via GlobalFin</span>
           </div>
         </div>
 

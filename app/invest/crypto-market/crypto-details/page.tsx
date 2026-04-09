@@ -238,7 +238,7 @@ function CryptoDetailsContent() {
         <section className="mb-8">
           <h2 className="text-lg font-bold mb-4">About</h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-            {marketCrypto.name} is a cryptocurrency on the Welvaart platform. Trade it seamlessly along with other supported decentralized assets.
+            {marketCrypto.name} is a cryptocurrency on the GlobalFin platform. Trade it seamlessly along with other supported decentralized assets.
           </p>
           <button className="mt-2 text-sm font-bold text-primary dark:text-accent">Show more</button>
         </section>

@@ -40,7 +40,7 @@ function FiatSuccessContent() {
                     src={currencyDetails.flag}
                   />
                 </div>
-                <span className="font-bold text-slate-400 tracking-widest text-sm uppercase">Welvaart</span>
+                <span className="font-bold text-slate-400 tracking-widest text-sm uppercase">GlobalFin</span>
               </div>
               <span className="material-symbols-outlined text-slate-300">contactless</span>
             </div>

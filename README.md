@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 # Welvaart — Interactive Prototype
+=======
+# GlobalFin — Next.js Interactive Prototype
+>>>>>>> 176a278 (updated)
 
-A fully connected, interactive prototype of the Welvaart financial platform, converted from 50 Stitch-designed HTML pages into a working Next.js 14 application.
+A fully connected, interactive prototype of the GlobalFin financial platform, converted from 50 Stitch-designed HTML pages into a working Next.js 14 application.
 
 ## 📱 App Structure
 
@@ -103,7 +107,7 @@ Original design tokens preserved:
 ## 📁 Project Structure
 
 ```
-welvaart/
+globalfin/
 ├── app/
 │   ├── layout.tsx          # Root layout (fonts, global styles)
 │   ├── globals.css         # Tailwind + custom classes
@@ -124,4 +128,4 @@ welvaart/
 ├── next.config.js
 └── package.json
 ```
-# welvaart
+# globalfin

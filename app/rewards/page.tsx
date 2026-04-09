@@ -13,7 +13,7 @@ export default function RewardsPage() {
       <div className="h-4 w-full"></div>
       <header className="px-6 py-4 flex justify-between items-center sticky top-0 bg-background-light/80 dark:bg-background-dark/80 ios-blur z-50">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Welvaart</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">GlobalFin</p>
           <h1 className="text-2xl font-bold">Wealth Rewards</h1>
         </div>
       </header>

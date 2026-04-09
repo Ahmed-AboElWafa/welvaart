@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import BottomNav from '@/components/BottomNav'
 import { useApp } from '@/hooks/useApp'
-import welvaartLogo from './welvaart-logo.jpg'
+import globalfinLogo from './globalfin-logo.jpg'
 
 export default function HomePage() {
   const router = useRouter()
@@ -12,7 +12,7 @@ export default function HomePage() {
   if (loading || !user || !portfolio) {
     return (
       <div className="bg-background-light text-slate-900 font-sans antialiased min-h-screen flex items-center justify-center">
-        <div className="animate-pulse text-primary font-bold">Loading Welvaart...</div>
+        <div className="animate-pulse text-primary font-bold">Loading GlobalFin...</div>
       </div>
     )
   }
@@ -22,7 +22,7 @@ export default function HomePage() {
       <div className="h-4 w-full"></div>
       <header className="px-6 py-4 flex justify-between items-center">
         <div className="flex items-center">
-          <img src={welvaartLogo.src} alt="Welvaart Logo" style={{ width: '160px', height: '50px' }} className="h-auto w-40 object-contain" />
+          <img src={globalfinLogo.src} alt="GlobalFin Logo" style={{ width: '160px', height: '50px' }} className="h-auto w-40 object-contain" />
         </div>
         <div className="flex gap-3">
           <button className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center">

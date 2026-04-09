@@ -21,7 +21,7 @@ function FiatConfirmContent() {
       balance: `${currencyDetails.symbol}0.00`,
       flag: currencyDetails.flag,
       holder: user.name,
-      swift: 'WELVAARTX',
+      swift: 'GLOBALFINX',
       label: 'IBAN',
       accountId: `${currencyCode}55 0000 1111 2222 3333`,
     });

@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Welvaart',
+  title: 'GlobalFin',
   description: 'Premium Financial Platform',
 }
 

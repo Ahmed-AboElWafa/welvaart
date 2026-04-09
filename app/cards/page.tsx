@@ -69,7 +69,7 @@ export default function CardsPage() {
         <div className="h-4 w-full"></div>
         <header className="px-6 py-4 flex items-center sticky top-0 bg-background-light/80 dark:bg-background-dark/80 ios-blur z-20">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">Welvaart</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">GlobalFin</p>
             <h1 className="text-3xl font-bold">Cards</h1>
           </div>
         </header>
@@ -91,7 +91,7 @@ export default function CardsPage() {
               )}
 
               <div className="flex justify-between items-start z-10">
-                <div className="text-lg font-semibold tracking-wide italic">Welvaart</div>
+                <div className="text-lg font-semibold tracking-wide italic">GlobalFin</div>
                 <span className="material-icons-round text-3xl">contactless</span>
               </div>
               <div className="z-10">

@@ -91,7 +91,7 @@ function ConvertSuccessContent() {
           </div>
         </div>
         <p className="mt-10 text-[11px] text-slate-400 text-center leading-relaxed px-10 italic">
-          This digital receipt is a record of your successful transaction within the Welvaart multi-asset ecosystem.
+          This digital receipt is a record of your successful transaction within the GlobalFin multi-asset ecosystem.
         </p>
       </main>
       <div className="bg-white dark:bg-[#0D242B] border-t border-slate-100 dark:border-slate-800 px-6 pt-6 pb-10 shrink-0 rounded-t-[40px] shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">

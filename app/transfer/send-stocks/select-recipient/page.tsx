@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
-type Method = 'welvaart' | null
+type Method = 'globalfin' | null
 
 
 const contacts = [
@@ -44,7 +44,7 @@ export default function SendStocksSelectRecipientPage() {
   const handleMethodSelect = (method: Method) => {
     setActiveMethod(prev => prev === method ? null : method)
   }
-  const canProceedWelvaart = gfIdentifier.trim().length > 0
+  const canProceedGlobalFin = gfIdentifier.trim().length > 0
 
   return (
     <div className="relative flex min-h-screen w-full max-w-[430px] mx-auto flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
@@ -83,29 +83,29 @@ export default function SendStocksSelectRecipientPage() {
           </div>
         </div> */}
 
-        {/* — Welvaart User — */}
+        {/* — GlobalFin User — */}
         <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 transition-all">
           <button
-            onClick={() => handleMethodSelect('welvaart')}
-            className={`flex items-center p-5 w-full text-left group transition-colors ${activeMethod === 'welvaart' ? 'bg-primary/5 border-primary' : 'bg-[#F8FAFC] hover:bg-slate-50'}`}
+            onClick={() => handleMethodSelect('globalfin')}
+            className={`flex items-center p-5 w-full text-left group transition-colors ${activeMethod === 'globalfin' ? 'bg-primary/5 border-primary' : 'bg-[#F8FAFC] hover:bg-slate-50'}`}
           >
-            <div className={`size-12 rounded-lg flex items-center justify-center mr-4 transition-all group-hover:scale-105 ${activeMethod === 'welvaart' ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
+            <div className={`size-12 rounded-lg flex items-center justify-center mr-4 transition-all group-hover:scale-105 ${activeMethod === 'globalfin' ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
               <span className="material-symbols-outlined text-3xl">bolt</span>
             </div>
             <div className="flex-1">
               <div className="flex items-center justify-between">
-                <p className="font-bold text-slate-900 dark:text-white text-base">To Welvaart User</p>
+                <p className="font-bold text-slate-900 dark:text-white text-base">To GlobalFin User</p>
                 <span className="text-[10px] bg-primary text-white px-2 py-0.5 rounded-full font-bold uppercase">Instant</span>
               </div>
               <p className="text-xs text-slate-500">Send via phone or username</p>
             </div>
-            <span className={`material-symbols-outlined ml-3 text-slate-400 transition-transform duration-200 ${activeMethod === 'welvaart' ? 'rotate-90 text-primary' : ''}`}>chevron_right</span>
+            <span className={`material-symbols-outlined ml-3 text-slate-400 transition-transform duration-200 ${activeMethod === 'globalfin' ? 'rotate-90 text-primary' : ''}`}>chevron_right</span>
           </button>
 
-          {/* Inline Welvaart form */}
-          {activeMethod === 'welvaart' && (
+          {/* Inline GlobalFin form */}
+          {activeMethod === 'globalfin' && (
             <div className="px-5 pb-5 pt-3 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
-              <p className="text-xs text-slate-500 mb-3 font-medium">Enter the recipient&apos;s phone number or Welvaart username</p>
+              <p className="text-xs text-slate-500 mb-3 font-medium">Enter the recipient&apos;s phone number or GlobalFin username</p>
               <div className="relative mb-4">
                 <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">person_search</span>
                 <input
@@ -117,8 +117,8 @@ export default function SendStocksSelectRecipientPage() {
                 />
               </div>
               <button
-                onClick={() => router.push(`/transfer/send-stocks/recipient-shares?name=Welvaart%20User&handle=${encodeURIComponent(gfIdentifier)}&avatar=`)}
-                disabled={!canProceedWelvaart}
+                onClick={() => router.push(`/transfer/send-stocks/recipient-shares?name=GlobalFin%20User&handle=${encodeURIComponent(gfIdentifier)}&avatar=`)}
+                disabled={!canProceedGlobalFin}
                 className="w-full py-3.5 rounded-xl bg-primary text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md shadow-primary/20 active:scale-[0.98] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Continue
