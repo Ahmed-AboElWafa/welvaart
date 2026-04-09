@@ -1,7 +1,5 @@
 <<<<<<< HEAD
-# Welvaart — Interactive Prototype
-=======
-# GlobalFin — Next.js Interactive Prototype
+# GlobalFin — Interactive Prototype
 >>>>>>> 176a278 (updated)
 
 A fully connected, interactive prototype of the GlobalFin financial platform, converted from 50 Stitch-designed HTML pages into a working Next.js 14 application.
